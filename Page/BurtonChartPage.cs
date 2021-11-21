@@ -38,17 +38,10 @@ namespace AutomatinisTestavimas.Page
             return this;        
         }
        
-        public BurtonChartPage CheckTotalSum(string text)
+        public BurtonChartPage ChangeQntTo1oClick(string text)
         {
             ChangeQnt.SelectByValue("10");
             return this;
-        }
-       /* public BurtonChartPage ChankeQntTo1oClick(string total) //$399.50
-        {
-            string correctSum = Result.Text.Replace(" ", "");
-            string calculatetotal = correctSum;
-            Assert.AreEqual(calculatetotal = total, "Wrong ammount");
-            return this;
-        }     */  
+        }       
     }
 }
