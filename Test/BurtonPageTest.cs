@@ -77,7 +77,7 @@ namespace AutomatinisTestavimas.Test
             .SelectChart();
             _burtonChartPage.ItemPrice()
                 .ChangeQntTo1o()
-                .ChankeQntTo1oClick("10");               
+                .ChangeQntTo1oClick("10");               
         }
         
     }
