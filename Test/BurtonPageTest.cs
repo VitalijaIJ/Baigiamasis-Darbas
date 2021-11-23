@@ -1,4 +1,4 @@
-﻿using AutomatinisTestavimas.Drivers;
+using AutomatinisTestavimas.Drivers;
 using AutomatinisTestavimas.Page;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -13,7 +13,7 @@ namespace AutomatinisTestavimas.Test
 {
     public class BurtonPageTest : BaseTest
     {     
-        [Order (1)]
+        [Order (2)]
         [TestCase("123456", "2435*(", "VSC.com", "2021/13/13", "Vi11111111111111111111111111111111137", false, TestName = "False Name, Surname, email, BirthDay, Pasw.")]
         [TestCase("Vitalija", "Jankeviciene", "vitalija0117@gmail.com", "1919.04.20", "Vitalija123", false, TestName = "Email already used")]
         [TestCase("Ona", "Ona", "vitalija0117@gmai.com", "19190420", "Vitalija123", false, TestName = "Wrong email, BDay format")]
@@ -34,7 +34,7 @@ namespace AutomatinisTestavimas.Test
             .CreatePasswEnter(pasw)
             .RegisterButtonClick(result);
         }
-        [Order(2)]
+        [Order(1)]
         [Test]
         public void Checkbox()
         {
@@ -44,7 +44,7 @@ namespace AutomatinisTestavimas.Test
                 .ConfirmCheckBox1Unclicked()
                 .ConfirmCheckBox2Unclicked();
         }
-        [Order(3)]
+        [Order(4)]
         [TestCase("", "2435*(", false, TestName = "No Email")]
         [TestCase("vitalija0117@gmail.com", "", false, TestName = "No Pasw")]
         [TestCase("7@gmail.com", "fhh", false, TestName = "Wrong Pasw")]
@@ -58,7 +58,7 @@ namespace AutomatinisTestavimas.Test
             .SingInButtonClick(result);
 
         }
-        [Order(4)]
+        [Order(3)]
         [Test]
         public void CheckErrorMessage()
         {
