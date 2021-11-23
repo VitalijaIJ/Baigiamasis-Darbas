@@ -1,5 +1,6 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,8 @@ namespace AutomatinisTestavimas.Page
         }
         public CreateAccountPage CheckBoxClick()
         {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => MultipleCheckboxList1.Displayed);
             if ((!MultipleCheckboxList1.Selected) && (!MultipleCheckboxList2.Selected))
                 MultipleCheckboxList1.Click();
             MultipleCheckboxList2.Click();
@@ -89,18 +92,24 @@ namespace AutomatinisTestavimas.Page
         }
         public CreateAccountPage CheckBoxUnclick()
         {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => MultipleCheckboxList1.Displayed);
             if ((MultipleCheckboxList1.Selected) && (MultipleCheckboxList2.Selected))
                 MultipleCheckboxList1.Click();
             MultipleCheckboxList2.Click();
             return this;
         }
         public CreateAccountPage ConfirmCheckBox1Unclicked()
-        {         
-                Assert.False(MultipleCheckboxList1.Selected, "Checkbox 1 is still checked");
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => MultipleCheckboxList1.Displayed);
+            Assert.False(MultipleCheckboxList1.Selected, "Checkbox 1 is still checked");
             return this;
         }
         public CreateAccountPage ConfirmCheckBox2Unclicked()
         {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => MultipleCheckboxList2.Displayed);
             Assert.False(MultipleCheckboxList2.Selected, "Checkbox 2 is still checked");
             return this;
         }
@@ -108,3 +117,4 @@ namespace AutomatinisTestavimas.Page
     }
 
 }
+
