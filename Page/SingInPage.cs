@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -70,6 +70,8 @@ namespace AutomatinisTestavimas.Page
         }
         public SingInPage CheckResulPaswEmpty()
         {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => SingInErrorMessagePasw.Displayed);
             Assert.IsTrue(SingInErrorMessagePasw.Text.Equals(TextToCheckPaswEmail));
             return this;
         }
