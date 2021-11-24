@@ -32,7 +32,8 @@ namespace AutomatinisTestavimas.Page
         private IWebElement SingInButton => Driver.FindElement(By.CssSelector("#dwfrm_login_login"));
         private IWebElement SingInErrorMessageEmail => Driver.FindElement(By.Id("dwfrm_login_username_error"));
         private IWebElement SingInErrorMessagePasw => Driver.FindElement(By.Id("dwfrm_login_password_error"));
-        private IWebElement SingInButtonNotorrect => Driver.FindElement(By.CssSelector(".before-clicked"));
+        private IWebElement SingOutButton => Driver.FindElement(By.LinkText("Sign Out"));
+        private IWebElement SingOutIcon => Driver.FindElement(By.CssSelector(".account-icon-label"));
         public SingInPage SingInPopUpClose()
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
@@ -86,6 +87,12 @@ namespace AutomatinisTestavimas.Page
             Actions action = new Actions(Driver);
             action.KeyUp(Keys.Enter);
             action.Build().Perform();
+            return this;
+        }
+        public SingInPage SingOutClick()
+        {
+            SingOutIcon.Click();
+            SingOutButton.Click();
             return this;
         }
     }
