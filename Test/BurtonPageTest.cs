@@ -48,17 +48,26 @@ namespace AutomatinisTestavimas.Test
         [TestCase("", "2435*(", false, TestName = "No Email")]
         [TestCase("vitalija0117@gmail.com", "", false, TestName = "No Pasw")]
         [TestCase("7@gmail.com", "fhh", false, TestName = "Wrong Pasw")]
-        [TestCase("7@gma", "fhh", false, TestName = "Wrong email")]
-        [TestCase("vitalija0117@gmail.com", "Vitalija123", true, TestName = "correct")]
+        [TestCase("7@gma", "fhh", false, TestName = "Wrong email")]       
         public void SingIn(string email, string pasw, bool result)
         {
             _singinPage.NavigateToDefaultPage()
                 .SingInEmailEnter(email)
             .SingInPaswEnter(pasw)
             .SingInButtonClick(result);
-
         }
-        [Order(3)]
+        [Order(6)]
+        [TestCase("vitalija0117@gmail.com", "Vitalija123", true, TestName = "correct")]
+        public void SingInOutCorrect(string email, string pasw, bool result)
+        {
+            _singinPage.NavigateToDefaultPage()
+                .SingInEmailEnter(email)
+            .SingInPaswEnter(pasw)
+            .SingInButtonClick(result)
+            .SingOutClick();
+        }
+
+        [Order(4)]
         [Test]
         public void CheckErrorMessage()
         {
@@ -68,7 +77,7 @@ namespace AutomatinisTestavimas.Test
                 .CheckResulPaswEmpty();
 
         }
-        [Order(4)]
+        [Order(3)]
         [Test]
         public void AddToBasket()
         {
@@ -79,7 +88,6 @@ namespace AutomatinisTestavimas.Test
                 .ChangeQntTo1o()
                 .ChangeQntTo1oClick("10");
            // .CheckItemTotalAmount("$399.50");
-        }
-        
+        }        
     }
 }
