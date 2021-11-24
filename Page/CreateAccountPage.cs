@@ -30,7 +30,7 @@ namespace AutomatinisTestavimas.Page
         //private IWebElement CreateDateOfBirthMessage => Driver.FindElement(By.Id("dwfrm_profile_customer_birthday_error"));
         private IWebElement CreatePassw => Driver.FindElement(By.Id("dwfrm_profile_login_password"));
        // private IWebElement CreatePasswMessage => Driver.FindElement(By.Id("dwfrm_profile_login_password_error"));
-        private IWebElement RegisterButton => Driver.FindElement(By.Id("dwfrm_profile_customer_createprofile"));
+        private IWebElement RegisterButton => Driver.FindElement(By.CssSelector(".before-clicked"));
         private IWebElement SingInOption => Driver.FindElement(By.CssSelector("#main-content > div > div > div > span > a"));
         private IWebElement PopUp => Driver.FindElement(By.CssSelector("#onetrust-close-btn-container > button"));
         private IWebElement MultipleCheckboxList1 => Driver.FindElement(By.CssSelector(".addtoemaillist .check-svg"));
@@ -67,6 +67,8 @@ namespace AutomatinisTestavimas.Page
         }
         public CreateAccountPage RegisterButtonClick(bool shouldBeAvailable)
         {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => RegisterButton.Displayed);
             if (shouldBeAvailable != RegisterButton.Selected)            
                 RegisterButton.Click();
                 return this;    
@@ -113,8 +115,6 @@ namespace AutomatinisTestavimas.Page
             Assert.False(MultipleCheckboxList2.Selected, "Checkbox 2 is still checked");
             return this;
         }
-        
+      
     }
-
 }
-
